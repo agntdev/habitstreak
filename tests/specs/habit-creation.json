@@ -1,0 +1,78 @@
+[
+  {
+    "name": "add new habit from menu",
+    "steps": [
+      {
+        "send": {
+          "callback": "habit:create"
+        },
+        "expect": [
+          {
+            "method": "answerCallbackQuery"
+          },
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "What habit do you want to track?"
+            }
+          }
+        ]
+      },
+      {
+        "send": {
+          "text": "Read 30 minutes"
+        },
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "Nice choice — \"Read 30 minutes\"!\n\nHow often?"
+            }
+          }
+        ]
+      },
+      {
+        "send": {
+          "callback": "schedule:add:daily"
+        },
+        "expect": [
+          {
+            "method": "answerCallbackQuery"
+          },
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "When should I remind you?"
+            }
+          }
+        ]
+      },
+      {
+        "send": {
+          "callback": "create:reminder:20"
+        },
+        "expect": [
+          {
+            "method": "answerCallbackQuery"
+          },
+          {
+            "method": "sendMessage"
+          }
+        ]
+      },
+      {
+        "send": {
+          "callback": "create:confirm:yes"
+        },
+        "expect": [
+          {
+            "method": "answerCallbackQuery"
+          },
+          {
+            "method": "sendMessage"
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -3,12 +3,14 @@
     "name": "/help explains the bot in plain language",
     "steps": [
       {
-        "send": { "text": "/help" },
+        "send": {
+          "text": "/help"
+        },
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "ℹ️ Tap /start to open the menu, then pick what you want from the buttons.\n\nEverything in this bot is reachable by tapping — you don't need to remember any commands."
+              "text": "ℹ️ How to use HabitStreak:\n\nTap /start to open the menu, then pick what you want from the buttons.\n\n• 📋 My habits — view and manage your habits\n• ✅ Check in — mark today’s habits as done\n• ➕ Add habit — create a new habit to track\n\nI’ll remind you each day to check in. Keep your streak going!"
             }
           }
         ]
@@ -19,8 +21,14 @@
     "name": "the Help menu button shows the same help text",
     "steps": [
       {
-        "send": { "callback": "menu:help" },
-        "expect": [{ "method": "editMessageText" }]
+        "send": {
+          "callback": "menu:help"
+        },
+        "expect": [
+          {
+            "method": "editMessageText"
+          }
+        ]
       }
     ]
   }

@@ -1,0 +1,100 @@
+[
+  {
+    "name": "full onboarding flow",
+    "steps": [
+      {
+        "send": {
+          "text": "/start"
+        },
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "👋 Welcome to HabitStreak! I'll help you build good habits one day at a time.\n\nLet's get you set up — what's your timezone?\n\nPick your timezone:"
+            }
+          }
+        ]
+      },
+      {
+        "send": {
+          "callback": "tz:America/New_York"
+        },
+        "expect": [
+          {
+            "method": "answerCallbackQuery"
+          },
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "Great, America/New_York it is!\n\nNow let's create your first habit. What do you want to track?"
+            }
+          }
+        ]
+      },
+      {
+        "send": {
+          "callback": "habit:quick:Exercise"
+        },
+        "expect": [
+          {
+            "method": "answerCallbackQuery"
+          },
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "Nice choice — \"Exercise\"!\n\nHow often?"
+            }
+          }
+        ]
+      },
+      {
+        "send": {
+          "callback": "schedule:daily"
+        },
+        "expect": [
+          {
+            "method": "answerCallbackQuery"
+          },
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "When should I remind you?"
+            }
+          }
+        ]
+      },
+      {
+        "send": {
+          "callback": "reminder:9"
+        },
+        "expect": [
+          {
+            "method": "answerCallbackQuery"
+          },
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "Here's your first habit:\n\n📌 Exercise\n📅 every day\n⏰ Reminder at 9 AM\n\nReady to start?"
+            }
+          }
+        ]
+      },
+      {
+        "send": {
+          "callback": "onboarding:confirm:yes"
+        },
+        "expect": [
+          {
+            "method": "answerCallbackQuery"
+          },
+          {
+            "method": "editMessageText",
+            "payload": {
+              "text": "🎉 You're all set!\n\nYour first habit \"Exercise\" is active. I'll remind you daily.\n\nTap a button below to get started."
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

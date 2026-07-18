@@ -5,8 +5,36 @@ import { createBot, type BotContext } from "./toolkit/index.js";
 // The per-chat session shape (ephemeral conversation state only). Extend as the
 // bot grows. Durable domain data must NOT live here — use the toolkit's
 // persistent storage (see AGENTS.md).
+export interface Habit {
+  id: string;
+  title: string;
+  active: boolean;
+  reminderHour: number;
+  reminderMinute: number;
+  scheduleType: "daily" | "weekdays" | "custom";
+  createdAt: string;
+  milestoneTargets: number[];
+}
+
+export interface DayRecord {
+  habitId: string;
+  date: string;
+  status: "done" | "skip" | "deferred";
+  timestamp: string;
+}
+
 export interface Session {
-  // example: step?: "awaiting_amount";
+  step?: string;
+  timezone?: string;
+  reminderHour?: number;
+  reminderMinute?: number;
+  weeklyRecapDay?: number;
+  optInMilestones?: boolean;
+  habits?: Habit[];
+  dayRecords?: DayRecord[];
+  currentHabitIndex?: number;
+  pendingHabit?: Habit;
+  pendingReminderHabitIds?: string[];
 }
 
 export type Ctx = BotContext<Session>;

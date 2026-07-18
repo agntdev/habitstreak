@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Skip",
+    "steps": [
+      {
+        "expect": [
+          {
+            "method": "sendMessage",
+            "payload": {
+              "text": "Mark habit as skipped for the day"
+            }
+          }
+        ],
+        "send": {
+          "callback": "checkin:skip"
+        }
+      }
+    ]
+  }
+]

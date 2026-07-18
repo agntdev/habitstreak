@@ -3,17 +3,20 @@
     "name": "Remind me later",
     "steps": [
       {
+        "send": {
+          "callback": "checkin:defer"
+        },
         "expect": [
+          {
+            "method": "answerCallbackQuery"
+          },
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Postpone reminder by 30m or 2h"
+              "text": "⏰ Reminder postponed by 30 minutes. I’ll check back soon."
             }
           }
-        ],
-        "send": {
-          "callback": "checkin:defer"
-        }
+        ]
       }
     ]
   }

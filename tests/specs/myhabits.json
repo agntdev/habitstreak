@@ -1,19 +1,19 @@
 [
   {
-    "name": "/myhabits",
+    "name": "/myhabits shows empty state",
     "steps": [
       {
+        "send": {
+          "text": "/myhabits"
+        },
         "expect": [
           {
             "method": "sendMessage",
             "payload": {
-              "text": "View active habits and stats"
+              "text": "No habits yet — create one to get started!"
             }
           }
-        ],
-        "send": {
-          "text": "/myhabits"
-        }
+        ]
       }
     ]
   }

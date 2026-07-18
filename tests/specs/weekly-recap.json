@@ -1,20 +1,16 @@
 [
   {
-    "name": "Skip",
+    "name": "weekly recap shows empty state",
     "steps": [
       {
-        "send": {
-          "callback": "checkin:skip"
-        },
+        "send": { "callback": "recap:show" },
         "expect": [
           {
             "method": "answerCallbackQuery"
           },
           {
             "method": "sendMessage",
-            "payload": {
-              "text": "No active habits yet."
-            }
+            "payload": { "text": "No habits to recap — create one first!" }
           }
         ]
       }

@@ -3,17 +3,20 @@
     "name": "Done",
     "steps": [
       {
+        "send": {
+          "callback": "checkin:done"
+        },
         "expect": [
+          {
+            "method": "answerCallbackQuery"
+          },
           {
             "method": "sendMessage",
             "payload": {
-              "text": "Mark habit as completed for the day"
+              "text": "No active habits yet — tap 📋 My habits to create one."
             }
           }
-        ],
-        "send": {
-          "callback": "checkin:done"
-        }
+        ]
       }
     ]
   }
